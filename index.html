@@ -70,6 +70,27 @@
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(mp, s);
 })('ad0494840f664c488a4c924d97ae5fdf');
+	  
+	  function transaction() {
+		        mParticle.logEvent('',
+                         mParticle.EventType.Transaction,
+                         {'movie_length':'127 minutes','rating':'PG'},
+                         {'Lotame.Interest': 'top-40-music'});
+	  }
+	  
+	  function search() {
+		        mParticle.logEvent('Play Movie Tapped',
+                         mParticle.EventType.Social,
+                         {'movie_length':'127 minutes','rating':'PG'},
+                         {'Lotame.Interest': 'top-40-music'});
+	  }
+	  
+	  function social() {
+		        mParticle.logEvent('Play Movie Tapped',
+                         mParticle.EventType.Search,
+                         {'movie_length':'127 minutes','rating':'PG'},
+                         {'Lotame.Interest': 'top-40-music'});
+	  }
 </script>
 
 </head>
@@ -81,20 +102,9 @@
 	</div>
 	<div id="main_container"> 
 		<p> This is a test page!</p>
-		<button type="button" onclick="ProductAdded()">Product Added</button>
-		<button type="button" onclick="ProductAddedToWishlist()">Product Added to Wishlist</button>
-		<button type="button" onclick="CartViewed()">Cart Viewed</button>
-		<button type="button" onclick="PaymentInfoEntered()">Payment Info Entered</button>
-		<button type="button" onclick="OrderCompleted()">Order Completed</button>
-		<button type="button" onclick="checkoutStarted()">Checkout Started</button>
-		<button type="button" onclick="ProductsSearched()">Products Searched</button>
-		<button type="button" onclick="ProductViewed()">Product Viewed</button>
-		<button type="button" onclick="ProductListViewed()">Product List Viewed</button>
-		<button type="button" onclick="ProductReviewed()">Product Reviewed</button>
-		<button type="button" onclick="ProductShared()">Product Shared</button>
-		<button type="button" onclick="DeepLinkClicked()">Deep Link Clicked</button>
-		<button type="button" onclick="InstallAttributed()">Install Attributed</button>
-		<button type="button" onclick="DeepLinkOpened()">Deep Link Opened</button>		
+		<button type="button" onclick="transaction()">Transaction</button>
+		<button type="button" onclick="search()">Search</button>
+		<button type="button" onclick="social()">Social</button>	
 		<hr>
 	</div>
 	<footer>
