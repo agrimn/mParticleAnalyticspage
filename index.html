@@ -72,24 +72,27 @@
 })('ad0494840f664c488a4c924d97ae5fdf');
 	  
 	  function transaction() {
-		        mParticle.logEvent('',
-                         mParticle.EventType.Transaction,
-                         {'movie_length':'127 minutes','rating':'PG'},
-                         {'Lotame.Interest': 'top-40-music'});
+		log('Logging Transation');
+		mParticle.logEvent('',
+		mParticle.EventType.Transaction,
+		{'movie_length':'127 minutes','rating':'PG'},
+		{'Lotame.Interest': 'top-40-music'});
 	  }
 	  
 	  function search() {
-		        mParticle.logEvent('Play Movie Tapped',
-                         mParticle.EventType.Social,
-                         {'movie_length':'127 minutes','rating':'PG'},
-                         {'Lotame.Interest': 'top-40-music'});
+		log('Logging Search');
+		mParticle.logEvent('Play Movie Tapped',
+		mParticle.EventType.Social,
+		{'movie_length':'127 minutes','rating':'PG'},
+		{'Lotame.Interest': 'top-40-music'});
 	  }
 	  
 	  function social() {
-		        mParticle.logEvent('Play Movie Tapped',
-                         mParticle.EventType.Search,
-                         {'movie_length':'127 minutes','rating':'PG'},
-                         {'Lotame.Interest': 'top-40-music'});
+		log('Logging Social');
+		mParticle.logEvent('Play Movie Tapped',
+		mParticle.EventType.Search,
+		{'movie_length':'127 minutes','rating':'PG'},
+		{'Lotame.Interest': 'top-40-music'});
 	  }
 </script>
 
