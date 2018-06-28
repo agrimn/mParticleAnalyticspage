@@ -94,23 +94,23 @@
 	  
 	  function addToCart() {
 		console.log(' add to cart');
-	  	var product = mParticle.eCommerce.createProduct('mario cart', 'SKU-2371832', 100.00, 4);
+	  	var product = mParticle.eCommerce.createProduct('mario cart', 'SKU-2371832', 100.00, 4,'TOYS AND GAMES', 'Ninetendo', 1, 'BUYNOW');
 	  	var user = mParticle.Identity.getCurrentUser();
-user.Cart.add(product, true);
+		 mParticle.eCommerce.Cart.add(product, true);
 	  }
 	  
 	  function checkout() {
-		console.log('Checkout');
-		var product = mParticle.eCommerce.createProduct('mario cart', 'SKU-2371832', 100.00, 4);
-		var transactionAttributes = mParticle.eCommerce.createTransactionAttributes('126317-transaction-id');
+		console.log('checkout');
+	  	var product = mParticle.eCommerce.createProduct('mario cart', 'SKU-2371832', 100.00, 4,'TOYS AND GAMES', 'Ninetendo', 1, 'BUYNOW');
+		var transactionAttributes = mParticle.eCommerce.createTransactionAttributes('TRANSACTION_ID213123','AFFILIATION','BUYNOW-COUPON',100.00,4.25,10.23)
 	  	mParticle.eCommerce.logPurchase(transactionAttributes, product);
 	  }
 	  
-	  function Purchase() {
-		console.log(' Purchasing ');
-		var product = mParticle.eCommerce.createProduct('mario cart', 'SKU-2371832', 100.00, 4);
-		var transactionAttributes = mParticle.eCommerce.createTransactionAttributes('126317-transaction-id');
-	  	mParticle.eCommerce.logPurchase(transactionAttributes, product);
+	  function purchase() {
+		console.log('purchasing');
+	  	var product = mParticle.eCommerce.createProduct('mario cart', 'SKU-2371832', 100.00, 4,'TOYS AND GAMES', 'Ninetendo', 1, 'BUYNOW');
+		var transactionAttributes = mParticle.eCommerce.createTransactionAttributes('TRANSACTION_ID213123','AFFILIATION','BUYNOW-COUPON',100.00,4.25,10.23)
+	  	mParticle.eCommerce.logPurchase(transactionAttributes, product, true);
 	  }
 </script>
 
@@ -125,7 +125,7 @@ user.Cart.add(product, true);
 		<p> This is a test page!</p>
 		<button type="button" onclick="addToCart()">AddToCart</button>
 		<button type="button" onclick="checkout()">Checkout</button>
-		<button type="button" onclick="Purchase()">Purchase</button>
+		<button type="button" onclick="purchase()">Purchase</button>
 		<button type="button" onclick="search()">Search</button>
 		<button type="button" onclick="social()">Social</button>	
 		<hr>
