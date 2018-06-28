@@ -71,28 +71,46 @@
     s.parentNode.insertBefore(mp, s);
 })('ad0494840f664c488a4c924d97ae5fdf');
 	  
-	  function transaction() {
-		log('Logging Transation');
-		mParticle.logEvent('',
-		mParticle.EventType.Transaction,
-		{'movie_length':'127 minutes','rating':'PG'},
-		{'Lotame.Interest': 'top-40-music'});
+	var identityRequest = {
+		userIdentities: {
+			email:      'email@example.com',
+			customerid: '123456'    
+		}
+	}
+	
+	function onLoginResult(result){
+		if (result.httpCode == 200) {
+			//proceed with login
+			//you can access the new/current mpid here
+			console.log(' We are logging in');
+			var userId = result.body.mpid;
+		} else if (result.httpCode == -1) {
+			//browser has no coverage/HTTP request failed
+		} else if (result.httpCode == 429) {
+			//in rare circumstances, requests will be throttled and need to be retried
+		}
+	}
+	mParticle.Identity.login(loginRequestUserObject, onLoginResult);
+	  
+	  function addToCart() {
+		console.log(' add to cart');
+	  	var product = mParticle.eCommerce.createProduct('mario cart', 'SKU-2371832', 100.00, 4);
+	  	var user = mParticle.Identity.getCurrentUser();
+user.Cart.add(product, true);
 	  }
 	  
-	  function search() {
-		log('Logging Search');
-		mParticle.logEvent('Play Movie Tapped',
-		mParticle.EventType.Social,
-		{'movie_length':'127 minutes','rating':'PG'},
-		{'Lotame.Interest': 'top-40-music'});
+	  function checkout() {
+		console.log('Checkout');
+		var product = mParticle.eCommerce.createProduct('mario cart', 'SKU-2371832', 100.00, 4);
+		var transactionAttributes = mParticle.eCommerce.createTransactionAttributes('126317-transaction-id');
+	  	mParticle.eCommerce.logPurchase(transactionAttributes, product);
 	  }
 	  
-	  function social() {
-		log('Logging Social');
-		mParticle.logEvent('Play Movie Tapped',
-		mParticle.EventType.Search,
-		{'movie_length':'127 minutes','rating':'PG'},
-		{'Lotame.Interest': 'top-40-music'});
+	  function Purchase() {
+		console.log(' Purchasing ');
+		var product = mParticle.eCommerce.createProduct('mario cart', 'SKU-2371832', 100.00, 4);
+		var transactionAttributes = mParticle.eCommerce.createTransactionAttributes('126317-transaction-id');
+	  	mParticle.eCommerce.logPurchase(transactionAttributes, product);
 	  }
 </script>
 
@@ -105,7 +123,9 @@
 	</div>
 	<div id="main_container"> 
 		<p> This is a test page!</p>
-		<button type="button" onclick="transaction()">Transaction</button>
+		<button type="button" onclick="addToCart()">AddToCart</button>
+		<button type="button" onclick="checkout()">Checkout</button>
+		<button type="button" onclick="Purchase()">Purchase</button>
 		<button type="button" onclick="search()">Search</button>
 		<button type="button" onclick="social()">Social</button>	
 		<hr>
