@@ -101,15 +101,13 @@
 	  
 	  function checkout() {
 		console.log('checkout');
-	  	var product = mParticle.eCommerce.createProduct('mario cart', 'SKU-2371832', 100.00, 4,'TOYS AND GAMES', 'Ninetendo', 1, 'BUYNOW');
-		var transactionAttributes = mParticle.eCommerce.createTransactionAttributes('TRANSACTION_ID213123','AFFILIATION','BUYNOW-COUPON',100.00,4.25,10.23)
+		var transactionAttributes = mParticle.eCommerce.createTransactionAttributes('TRANSACTION_ID213123','AFFILIATION','BUYNOW-COUPON')
 	  	mParticle.eCommerce.logPurchase(transactionAttributes, product);
 	  }
 	  
 	  function purchase() {
 		console.log('purchasing');
-	  	var product = mParticle.eCommerce.createProduct('mario cart', 'SKU-2371832', 100.00, 4,'TOYS AND GAMES', 'Ninetendo', 1, 'BUYNOW');
-		var transactionAttributes = mParticle.eCommerce.createTransactionAttributes('TRANSACTION_ID213123','AFFILIATION','BUYNOW-COUPON',100.00,4.25,10.23)
+		var transactionAttributes = mParticle.eCommerce.createTransactionAttributes('TRANSACTION_ID213123','AFFILIATION','BUYNOW-COUPON')
 	  	mParticle.eCommerce.logPurchase(transactionAttributes, product, true);
 	  }
 </script>
