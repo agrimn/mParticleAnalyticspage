@@ -105,10 +105,9 @@
 	  	mParticle.eCommerce.logPurchase(transactionAttributes, product);
 	  }
 	  
-	  function purchase() {
-		console.log('purchasing');
-		var transactionAttributes = mParticle.eCommerce.createTransactionAttributes('TRANSACTION_ID213123','AFFILIATION','BUYNOW-COUPON')
-	  	mParticle.eCommerce.logPurchase(transactionAttributes, product, true);
+	  function getCartProducts() {
+		console.log('Trying to trigger product cart views');
+	  	mParticle.eCommerce.cart.getCartProducts();
 	  }
 </script>
 
@@ -124,7 +123,7 @@
 		<button type="button" onclick="addToCart()">AddToCart</button>
 		<button type="button" onclick="checkout()">Checkout</button>
 		<button type="button" onclick="purchase()">Purchase</button>
-		<button type="button" onclick="search()">Search</button>
+		<button type="button" onclick="getCartProducts()">getCartProducts</button>
 		<button type="button" onclick="social()">Social</button>	
 		<hr>
 	</div>
