@@ -99,14 +99,46 @@
 		 mParticle.eCommerce.Cart.add(product, true);
 	  }
 	  
+	  function addToWishlist() {
+		console.log(' add to wishlist');
+	  	var product = mParticle.eCommerce.createProduct('mario cart', 'SKU-2371832', 100.00, 4,'TOYS AND GAMES', 'Ninetendo', 1, 'BUYNOW');
+		CommerceEvent event = new CommerceEvent.Builder(Product.AddToWishlist, product)
+                        .build();
+		MParticle.getInstance().logEvent(event);
+	  }
+	  
 	  function checkout() {
 		console.log('checkout');
 		var transactionAttributes = mParticle.eCommerce.createTransactionAttributes('TRANSACTION_ID213123','AFFILIATION','BUYNOW-COUPON')
-	  	mParticle.eCommerce.logPurchase(transactionAttributes, product);
+	  	mParticle.eCommerce.logCheckout(1,'MASTERCARD');
+	  }
+	  
+	 function purchase() {
+		console.log('purchase');
+		var product = mParticle.eCommerce.createProduct('mario cart', 'SKU-2371832', 100.00, 4,'TOYS AND GAMES', 'Ninetendo', 1, 'BUYNOW');
+		var transactionAttributes = mParticle.eCommerce.createTransactionAttributes('TRANSACTION_ID213123','AFFILIATION','BUYNOW-COUPON')
+	  	mParticle.eCommerce.logPurchase(transactionAttributes,product,true);
+	  }
+	  
+	 function viewItem() {
+		console.log(' view Item');
+	  	var product = mParticle.eCommerce.createProduct('mario cart', 'SKU-2371832', 100.00, 4,'TOYS AND GAMES', 'Ninetendo', 1, 'BUYNOW');
+		CommerceEvent event = new CommerceEvent.Builder(Product.ViewDetail, product)
+                        .build();
+		MParticle.getInstance().logEvent(event);
+	  }
+	  
+	 function search() {
+		console.log('search');
+		var product = mParticle.eCommerce.createProduct('mario cart', 'SKU-2371832', 100.00, 4,'TOYS AND GAMES', 'Ninetendo', 1, 'BUYNOW');
+		MPEvent event = new MPEvent.Builder("Search", MParticle.EventType.Search)
+                .addCustomFlag("search_term", "mario")
+                .build();
+		MParticle.getInstance().logEvent(event);
 	  }
 	  
 	  function getCartProducts() {
-		console.log('Trying to trigger product cart views');
+		console.log('Trying to trigger product cart views');`
 	 	console.log(mParticle.eCommerce.Cart.getCartProducts());
 	  }
 </script>
@@ -121,10 +153,12 @@
 	<div id="main_container"> 
 		<p> This is a test page!</p>
 		<button type="button" onclick="addToCart()">AddToCart</button>
+		<button type="button" onclick="addToWishlist()">AddToWishlist</button>
 		<button type="button" onclick="checkout()">Checkout</button>
 		<button type="button" onclick="purchase()">Purchase</button>
 		<button type="button" onclick="getCartProducts()">getCartProducts</button>
-		<button type="button" onclick="social()">Social</button>	
+		<button type="button" onclick="viewItem()">ProductViewDetail</button>
+		<button type="button" onclick="search()">Social</button>
 		<hr>
 	</div>
 	<footer>
