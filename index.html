@@ -102,7 +102,7 @@
 	  function addToWishlist() {
 		console.log(' add to wishlist');
 	  	var product = mParticle.eCommerce.createProduct('mario cart', 'SKU-2371832', 100.00, 4,'TOYS AND GAMES', 'Ninetendo', 1, 'BUYNOW');
-		mParticle.eCommerce.logProductAction(AddToWishlist, product);
+		mParticle.eCommerce.logProductAction(mParticle.ProductActionType.AddToWishlist, product);
 	  }
 	  
 	  function checkout() {
@@ -121,7 +121,7 @@
 	 function viewItem() {
 		console.log('Changed View Item');
 	  	var product = mParticle.eCommerce.createProduct('mario cart', 'SKU-2371832', 100.00, 4,'TOYS AND GAMES', 'Ninetendo', 1, 'BUYNOW');
-		mParticle.eCommerce.logProductAction(ViewDetail, product);
+		mParticle.eCommerce.logProductAction(mParticle.ProductActionType.ViewDetail, product);
 	  }
 	  
 	 function search() {
